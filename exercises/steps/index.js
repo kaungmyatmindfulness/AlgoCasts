@@ -17,6 +17,32 @@
 //       '### '
 //       '####'
 
-function steps(n) {}
+// function steps(n) {
+// 	[...Array(n)].forEach((o, outerIndex) => {
+// 		let line = "";
+// 		[...Array(n)].forEach((i, innerIndex) => {
+// 			if (innerIndex <= outerIndex) line += "#";
+// 			else line += " ";
+// 		});
+// 		console.log(line);
+// 		line = "";
+// 	});
+// }
+
+function steps(n, row = 0, stair = "") {
+	if (n === row) {
+		return;
+	}
+
+	if (n === stair.length) {
+		console.log(stair);
+		return steps(n, row + 1);
+	}
+
+	const add = stair.length <= row ? "#" : " ";
+	steps(n, row, stair + add);
+}
+
+steps(3);
 
 module.exports = steps;
