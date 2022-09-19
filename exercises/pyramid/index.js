@@ -14,6 +14,22 @@
 //       ' ### '
 //       '#####'
 
-function pyramid(n) {}
+function pyramid(n, row = 1) {
+	if (row > n) return;
+	const totalChars = 2 * n - 1;
+	const numOfSlashes = 2 * row - 1;
+	const numOfSpaces = totalChars - numOfSlashes;
+	const sideSpaces = numOfSpaces / 2;
+	let toPrint = "";
+	[...Array(totalChars)].forEach((e, i) => {
+		if (i < sideSpaces) toPrint += " ";
+		else if (i < sideSpaces + numOfSlashes) toPrint += "#";
+		else toPrint += " ";
+	});
+	console.log(toPrint);
+	pyramid(n, row + 1);
+}
+
+pyramid(4);
 
 module.exports = pyramid;
